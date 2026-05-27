@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SastreOS - Estadísticas y Motivación</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&amp;family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Subtle Swatch Card Texture overlay */
+        .swatch-texture {
+            position: relative;
+        }
+        .swatch-texture::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.03"/></svg>');
+            pointer-events: none;
+            border-radius: inherit;
+            z-index: 0;
+        }
+        .swatch-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131313;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #353535;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #45474b;
+        }
+    </style>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary": "#e9c349",
+                        "surface-container-low": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#7f7f79",
+                        "surface-container": "#20201f",
+                        "on-primary-container": "#7a7e8b",
+                        "primary-fixed-dim": "#c2c6d4",
+                        "on-tertiary-fixed": "#1b1c18",
+                        "primary-container": "#0f141e",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#353535",
+                        "surface-tint": "#c2c6d4",
+                        "primary-fixed": "#dee2f1",
+                        "tertiary-container": "#141410",
+                        "tertiary-fixed": "#e4e2dc",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-background": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary": "#2b303b",
+                        "on-tertiary-fixed-variant": "#474742",
+                        "on-secondary-container": "#342800",
+                        "surface-container-highest": "#353535",
+                        "outline-variant": "#45474b",
+                        "surface-bright": "#393939",
+                        "surface-container-high": "#2a2a2a",
+                        "outline": "#909096",
+                        "on-surface": "#e5e2e1",
+                        "primary": "#c2c6d4",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#171c26",
+                        "on-primary-fixed-variant": "#424752",
+                        "secondary-container": "#af8d11",
+                        "inverse-primary": "#595e6b",
+                        "tertiary": "#c8c6c0",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#131313",
+                        "error-container": "#93000a",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c8c6c0",
+                        "on-secondary": "#3c2f00",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary": "#30312c",
+                        "background": "#131313",
+                        "secondary-fixed": "#ffe088",
+                        "on-surface-variant": "#c6c6cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "container-max-width": "1440px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["EB Garamond"],
+                        "label-md": ["Hanken Grotesk"],
+                        "display-lg": ["EB Garamond"],
+                        "headline-lg-mobile": ["EB Garamond"],
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["EB Garamond"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "500" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-secondary/30 selection:text-secondary">
+<!-- TopNavBar -->
+<!-- Adjusted to sit next to SideNav on Desktop -->
+<header class="fixed top-0 right-0 w-full md:w-[calc(100%-16rem)] z-40 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/95 backdrop-blur-sm border-b border-secondary/20 dark:border-secondary/20">
+<!-- Search Bar (on_left) -->
+<div class="flex-1 max-w-md flex items-center">
+<div class="relative w-full group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary transition-colors duration-300" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-b border-outline-variant focus:border-secondary text-primary font-body-md text-body-md pl-10 pr-4 py-2 outline-none transition-all duration-300 focus:shadow-[0_4px_12px_-4px_rgba(233,195,73,0.1)] rounded-t-DEFAULT" placeholder="IA Client Search..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-6 ml-4">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95 flex items-center justify-center relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="hidden md:flex fixed left-0 top-0 h-full w-64 flex-col py-8 border-r border-outline-variant/20 bg-surface-container-low dark:bg-surface-container-low z-50">
+<!-- Header -->
+<div class="px-6 mb-10 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-variant border border-secondary/30 mb-4 overflow-hidden relative">
+<img alt="Master Tailor Profile" class="w-full h-full object-cover" data-alt="A meticulously styled portrait of an artisan tailor in a dimly lit, high-end atelier workspace. Soft, warm directional light highlights the fine texture of his tailored waistcoat and the measuring tape draped around his neck. The overall mood is deeply professional, classic, and steeped in a 'dark mode' aesthetic with rich charcoal and faint gold tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaZm37Upn7uvdR7QXMpNt39Y_CCF8s-blNFRJxp-BRVvjrJqUw4T8WtdeJ2NI0QFPnU5T5RytDbCX4UOFaNc2yngFqrZM4V4b3Jre-GtYBm8FphVIWMBy9_PS0mdnV-AL8P6AMmFMnI05BcebH2PM2gNJAevqjrFpxNObVIprDwHodk_yMoThzAT4MflhTngPP7N-spqAwXBX6fVVDuO566qZQxyfjK9_BbMQ9kUfMsW6bhsICxWlZrnPlMtTYvWmdZnxIbbM2VM-6"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-secondary italic mb-1">Atelier</h1>
+<span class="font-label-md text-label-md text-on-surface-variant tracking-widest uppercase text-xs">SastreOS Premium</span>
+</div>
+<!-- CTA -->
+<div class="px-6 mb-8">
+<button class="w-full py-3 border border-secondary/50 text-secondary hover:bg-secondary/10 transition-colors duration-300 font-label-md text-label-md rounded flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Commission
+            </button>
+</div>
+<!-- Navigation Links -->
+<div class="flex flex-col flex-1 gap-2">
+<!-- Inactive -->
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Daily Summary</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-md text-label-md">Calendar</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="straighten">straighten</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-label-md text-label-md">Issues</span>
+</a>
+<!-- Inactive -->
+<a class="flex items-center gap-4 px-6 py-3 text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="font-label-md text-label-md">Email</span>
+</a>
+<!-- Active Tab -->
+<a class="flex items-center gap-4 px-6 py-3 text-secondary dark:text-secondary border-r-2 border-secondary font-semibold bg-surface-variant/10 cursor-pointer active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-label-md text-label-md">Statistics</span>
+</a>
+</div>
+<!-- Mobile Bottom Brand (Optional, keeping it clean) -->
+<div class="px-6 mt-auto pb-4">
+<span class="font-headline-md text-headline-md text-secondary italic opacity-50 text-sm">SastreOS</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 md:pt-28 pb-20 md:ml-64 px-margin-mobile md:px-margin-desktop min-h-screen">
+<!-- Page Header -->
+<div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2 tracking-tight">Estadísticas</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Rendimiento mensual y métricas de atelier. Su precisión se refleja en los datos.</p>
+</div>
+<!-- Date Filter (Elegant Dropdown Mock) -->
+<button class="flex items-center gap-3 px-4 py-2 border-b border-outline-variant hover:border-secondary transition-colors duration-300 text-primary font-label-md text-label-md group">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant group-hover:text-secondary" data-icon="date_range">date_range</span>
+                Octubre 2023
+                <span class="material-symbols-outlined text-[18px] text-on-surface-variant ml-2" data-icon="arrow_drop_down">arrow_drop_down</span>
+</button>
+</div>
+<!-- Motivation & Goal Panel (Full Width Card) -->
+<section class="mb-8 relative rounded-lg border border-secondary/20 bg-surface-container-low overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] swatch-texture">
+<!-- Background Image overlay for premium feel -->
+<div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1558024920-b41e1887dc32?q=80&amp;w=1200&amp;auto=format&amp;fit=crop')] bg-cover bg-center mix-blend-overlay" data-alt="A macro shot of luxurious charcoal grey wool suiting fabric with a subtle pinstripe. The lighting is moody and dramatic, casting soft shadows across the textile's woven texture. Small, out-of-focus golden tailoring pins catch the dim light in the background, reinforcing a high-end, bespoke atelier aesthetic in deep dark tones."></div>
+<div class="swatch-content p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+<!-- Badge Area -->
+<div class="flex items-start gap-6 w-full md:w-1/3">
+<div class="w-16 h-16 rounded-full bg-surface border border-secondary/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(233,195,73,0.15)]">
+<span class="material-symbols-outlined text-secondary text-[32px]" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest block mb-1">Status Actual</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface leading-tight">Master Tailor Pace</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Proyección excepcional. Mantenga este ritmo para superar el objetivo anual.</p>
+</div>
+</div>
+<!-- Road to Goal Progress -->
+<div class="w-full md:w-2/3 max-w-2xl">
+<div class="flex justify-between items-end mb-3">
+<span class="font-label-md text-label-md text-on-surface">Objetivo Mensual: <span class="text-secondary">$45,000</span></span>
+<span class="font-headline-md text-headline-md text-on-surface">82%</span>
+</div>
+<!-- Custom Progress Track -->
+<div class="w-full h-1 bg-surface rounded-full overflow-hidden relative border border-outline-variant/30">
+<!-- Progress Fill -->
+<div class="absolute top-0 left-0 h-full bg-secondary w-[82%] relative">
+<!-- Glow effect on the needle point -->
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-3 bg-inverse-surface rounded-full shadow-[0_0_8px_2px_rgba(233,195,73,0.8)]"></div>
+</div>
+</div>
+<div class="flex justify-between mt-3 font-caption text-caption text-on-surface-variant">
+<span>$0</span>
+<span>Actual: $36,900</span>
+</div>
+</div>
+</div>
+</section>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+<!-- Metric 1: Sales -->
+<div class="rounded-lg bg-surface-container-low border-t border-secondary/20 p-6 flex flex-col justify-between swatch-texture h-40 group hover:border-secondary/50 transition-colors duration-300">
+<div class="swatch-content">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Ventas Brutas</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">$36.9K</div>
+<div class="flex items-center gap-2 mt-2 font-caption text-caption text-[#84cc16]">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>+12.4% vs Mes Anterior</span>
+</div>
+</div>
+</div>
+<!-- Metric 2: Conversion Rate -->
+<div class="rounded-lg bg-surface-container-low border-t border-secondary/20 p-6 flex flex-col justify-between swatch-texture h-40 group hover:border-secondary/50 transition-colors duration-300">
+<div class="swatch-content">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Tasa de Conversión</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="pie_chart">pie_chart</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">68.2%</div>
+<div class="flex items-center gap-2 mt-2 font-caption text-caption text-[#84cc16]">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>+3.1% vs Mes Anterior</span>
+</div>
+</div>
+</div>
+<!-- Metric 3: UPT -->
+<div class="rounded-lg bg-surface-container-low border-t border-secondary/20 p-6 flex flex-col justify-between swatch-texture h-40 group hover:border-secondary/50 transition-colors duration-300">
+<div class="swatch-content">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">UPT (Unidades/Transacción)</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="layers">layers</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">2.4</div>
+<div class="flex items-center gap-2 mt-2 font-caption text-caption text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_flat">trending_flat</span>
+<span>Sin cambios</span>
+</div>
+</div>
+</div>
+<!-- Metric 4: TM (Ticket Medio) -->
+<div class="rounded-lg bg-surface-container-low border-t border-secondary/20 p-6 flex flex-col justify-between swatch-texture h-40 group hover:border-secondary/50 transition-colors duration-300">
+<div class="swatch-content">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Ticket Medio (TM)</span>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary transition-colors" data-icon="receipt_long">receipt_long</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">$1,845</div>
+<div class="flex items-center gap-2 mt-2 font-caption text-caption text-error">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_down">trending_down</span>
+<span>-2.1% vs Mes Anterior</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Charts Area -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Main Chart: Rendimiento Visual -->
+<div class="lg:col-span-2 rounded-lg bg-surface-container-low border border-outline-variant/30 p-8 swatch-texture flex flex-col">
+<div class="swatch-content w-full h-full flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Evolución de Encargos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Volumen de piezas encargadas vs finalizadas.</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-on-surface-variant">Encargos</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full border border-secondary"></span>
+<span class="font-caption text-caption text-on-surface-variant">Entregas</span>
+</div>
+</div>
+</div>
+<!-- CSS Stylized Bar Chart Mockup (Premium minimalist approach) -->
+<div class="flex-1 flex items-end justify-between gap-2 mt-4 relative h-64 border-b border-outline-variant/30 pb-2">
+<!-- Y-Axis Lines (Background) -->
+<div class="absolute w-full top-0 border-t border-outline-variant/10"></div>
+<div class="absolute w-full top-1/4 border-t border-outline-variant/10"></div>
+<div class="absolute w-full top-1/2 border-t border-outline-variant/10"></div>
+<div class="absolute w-full top-3/4 border-t border-outline-variant/10"></div>
+<!-- Data Columns -->
+<div class="w-full flex justify-around items-end h-full z-10 px-4">
+<!-- Week 1 -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="flex items-end gap-1 h-full pb-2">
+<div class="w-4 bg-secondary h-[40%] rounded-t-sm group-hover:opacity-80 transition-opacity"></div>
+<div class="w-4 border border-secondary h-[35%] rounded-t-sm"></div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">S1</span>
+</div>
+<!-- Week 2 -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="flex items-end gap-1 h-full pb-2">
+<div class="w-4 bg-secondary h-[65%] rounded-t-sm group-hover:opacity-80 transition-opacity"></div>
+<div class="w-4 border border-secondary h-[45%] rounded-t-sm"></div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">S2</span>
+</div>
+<!-- Week 3 -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="flex items-end gap-1 h-full pb-2">
+<div class="w-4 bg-secondary h-[85%] rounded-t-sm group-hover:opacity-80 transition-opacity relative">
+<!-- Tooltip mock on hover (static for visual) -->
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface text-on-surface font-caption text-caption py-1 px-2 rounded border border-secondary/30 hidden group-hover:block whitespace-nowrap">
+                                            14 Encargos
+                                        </div>
+</div>
+<div class="w-4 border border-secondary h-[70%] rounded-t-sm"></div>
+</div>
+<span class="font-caption text-caption text-secondary font-bold">S3</span>
+</div>
+<!-- Week 4 -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="flex items-end gap-1 h-full pb-2">
+<div class="w-4 bg-secondary h-[50%] rounded-t-sm group-hover:opacity-80 transition-opacity"></div>
+<div class="w-4 border border-secondary h-[80%] rounded-t-sm"></div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">S4</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Insight Card -->
+<div class="rounded-lg bg-surface-container-low border border-outline-variant/30 p-8 swatch-texture flex flex-col justify-between">
+<div class="swatch-content">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Categorías Estrella</h3>
+<div class="space-y-6">
+<!-- Category Item 1 -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-primary">Trajes de Tres Piezas</span>
+<span class="text-on-surface">45%</span>
+</div>
+<div class="w-full h-[2px] bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%]"></div>
+</div>
+</div>
+<!-- Category Item 2 -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-primary">Chaquetas Sport</span>
+<span class="text-on-surface">30%</span>
+</div>
+<div class="w-full h-[2px] bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-secondary/70 w-[30%]"></div>
+</div>
+</div>
+<!-- Category Item 3 -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-primary">Camisería a Medida</span>
+<span class="text-on-surface">15%</span>
+</div>
+<div class="w-full h-[2px] bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-secondary/40 w-[15%]"></div>
+</div>
+</div>
+<!-- Category Item 4 -->
+<div>
+<div class="flex justify-between font-label-md text-label-md mb-2">
+<span class="text-primary">Pantalones de Vestir</span>
+<span class="text-on-surface">10%</span>
+</div>
+<div class="w-full h-[2px] bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-secondary/20 w-[10%]"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/20">
+<button class="w-full text-center font-label-md text-label-md text-secondary hover:text-on-surface transition-colors duration-300">
+                             Ver Desglose Completo
+                         </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</body></html>

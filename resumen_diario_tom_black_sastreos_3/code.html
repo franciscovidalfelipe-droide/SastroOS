@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resumen Diario - SastreOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary": "#e9c349",
+                      "surface-container-low": "#1c1b1b",
+                      "surface": "#131313",
+                      "on-tertiary-container": "#7f7f79",
+                      "surface-container": "#20201f",
+                      "on-primary-container": "#7a7e8b",
+                      "primary-fixed-dim": "#c2c6d4",
+                      "on-tertiary-fixed": "#1b1c18",
+                      "primary-container": "#0f141e",
+                      "error": "#ffb4ab",
+                      "surface-variant": "#353535",
+                      "surface-tint": "#c2c6d4",
+                      "primary-fixed": "#dee2f1",
+                      "tertiary-container": "#141410",
+                      "tertiary-fixed": "#e4e2dc",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-background": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary": "#2b303b",
+                      "on-tertiary-fixed-variant": "#474742",
+                      "on-secondary-container": "#342800",
+                      "surface-container-highest": "#353535",
+                      "outline-variant": "#45474b",
+                      "surface-bright": "#393939",
+                      "surface-container-high": "#2a2a2a",
+                      "outline": "#909096",
+                      "on-surface": "#e5e2e1",
+                      "primary": "#c2c6d4",
+                      "on-error": "#690005",
+                      "on-primary-fixed": "#171c26",
+                      "on-primary-fixed-variant": "#424752",
+                      "secondary-container": "#af8d11",
+                      "inverse-primary": "#595e6b",
+                      "tertiary": "#c8c6c0",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-dim": "#131313",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c8c6c0",
+                      "on-secondary": "#3c2f00",
+                      "on-secondary-fixed": "#241a00",
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary": "#30312c",
+                      "background": "#131313",
+                      "secondary-fixed": "#ffe088",
+                      "on-surface-variant": "#c6c6cc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1440px",
+                      "unit": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-lg-mobile": [
+                              "EB Garamond"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-secondary/30 selection:text-secondary">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface-container-low dark:bg-surface-container-low text-primary dark:text-primary font-label-md text-label-md docked left-0 h-full w-64 border-r border-secondary/10 dark:border-secondary/10 flat no shadows fixed left-0 top-0 flex-col py-8 z-40">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-lg text-headline-lg text-secondary">Tom Black</h1>
+<p class="font-caption text-caption text-on-surface-variant mt-1">SastreOS Premium</p>
+</div>
+<div class="px-gutter mb-8 flex justify-center">
+<div class="w-20 h-20 rounded-full border border-secondary/20 overflow-hidden">
+<img alt="Master Tailor Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a mature, distinguished gentleman in a beautifully tailored dark charcoal suit, soft cinematic lighting, evoking a premium, bespoke atelier atmosphere. Subtle hints of gold and navy in the blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2j95BQBkG0NagfH53x2mjPSsIskPhkKda_wGhlexXgRWUW_CkAZLy2y6li-Ht9Ol-QaVMDsqcH9QnV6ByHMSd3IZajkz_bPHMeiLQuajmWxF_7-IO6A55IntWpBFP7gQubeBo5S-b06bMFwyp4dykx2VUY6xJir4TG0M2eE4l3W5VR2Xk4A3u-ChTKHur-4uOPura6gcxY4U8Be711mOvN9dQgvgv59f0DVmptEbywdav_bgaIj2WVFrmjsrSyGVK9I2mVczY4DLc"/>
+</div>
+</div>
+<ul class="flex flex-col space-y-2 flex-grow px-4">
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-secondary dark:text-secondary border-r-2 border-secondary font-semibold bg-surface-variant/10 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                    Resumen Diario
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:bg-surface-container dark:hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">calendar_today</span>
+                    Calendario
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:bg-surface-container dark:hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">straighten</span>
+                    Pedidos
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:bg-surface-container dark:hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">warning</span>
+                    Incidencias
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:bg-surface-container dark:hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">mail</span>
+                    Correo
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface hover:bg-surface-container dark:hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">insights</span>
+                    Estadísticas
+                </a>
+</li>
+</ul>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 px-4 bg-tertiary-container border border-secondary/20 text-secondary font-label-md text-label-md rounded-DEFAULT hover:border-secondary/50 transition-colors duration-300 flex items-center justify-center cursor-pointer active:scale-95">
+<span class="material-symbols-outlined mr-2">add</span>
+                Nueva Comisión
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary font-headline-md text-headline-md font-body-md text-body-md docked full-width top-0 border-b border-secondary/20 dark:border-secondary/20 flat no shadows fixed top-0 w-full z-30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 bg-surface/95 backdrop-blur-sm md:w-[calc(100%-16rem)] md:ml-64">
+<!-- Mobile Menu & Search -->
+<div class="flex items-center flex-1">
+<button class="md:hidden mr-4 text-on-surface-variant hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-b border-secondary/20 focus:border-secondary/60 focus:ring-0 text-on-surface py-2 pl-10 pr-4 font-body-md text-body-md placeholder:text-on-surface-variant transition-colors duration-300" placeholder="IA Client Search..." type="text"/>
+</div>
+</div>
+<!-- Brand (Mobile only) -->
+<div class="font-headline-md text-headline-md text-secondary dark:text-secondary italic md:hidden">
+                SastreOS
+            </div>
+<!-- Actions -->
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-secondary dark:hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pt-24 md:pt-28 pb-12 px-margin-mobile md:px-margin-desktop">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Resumen Diario</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Martes, 24 de Octubre</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column (Wider) -->
+<div class="lg:col-span-8 flex flex-col space-y-gutter">
+<!-- Alerts Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden group">
+<!-- Subtle Linen Texture Overlay -->
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center">
+<span class="material-symbols-outlined mr-2">notifications_active</span>
+                                Alertas de Pedidos
+                            </h3>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300">Ver todas</button>
+</div>
+<div class="space-y-4 relative z-10">
+<!-- Alert Item 1 -->
+<div class="flex items-start p-3 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-2 border-l-error">
+<span class="material-symbols-outlined text-error mr-3 mt-0.5 text-[20px]" style="font-variation-settings: 'FILL' 1;">error</span>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Retraso en Aduanas</h4>
+<p class="font-body-md text-caption text-on-surface-variant">Tejido Scabal retenido (impacto en Sr. García).</p>
+</div>
+</div>
+<!-- Alert Item 2 -->
+<div class="flex items-start p-3 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-2 border-l-secondary">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Plazo de Entrega Próximo</h4>
+<p class="font-body-md text-caption text-on-surface-variant">Esmoquin Sr. Pendelton (48h restante).</p>
+</div>
+</div>
+<!-- Alert Item 3 -->
+<div class="flex items-start p-3 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-2 border-l-primary">
+<span class="material-symbols-outlined text-primary mr-3 mt-0.5 text-[20px]" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Tracking Actualizado</h4>
+<p class="font-body-md text-caption text-on-surface-variant">Forro de seda en centro de distribución.</p>
+</div>
+</div>
+<!-- Alert Item 4 -->
+<div class="flex items-start p-3 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-2 border-l-error">
+<span class="material-symbols-outlined text-error mr-3 mt-0.5 text-[20px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface mb-0.5">Previsión de Estancamiento</h4>
+<p class="font-body-md text-caption text-on-surface-variant">Envío USA del Sr. Shelby con retraso inusual detectado por IA.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Schedule Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden group flex-1">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center">
+<span class="material-symbols-outlined mr-2">event</span>
+                                Citas de Hoy
+                            </h3>
+<div class="flex space-x-2">
+<button class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary/50 transition-colors duration-300">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center text-on-surface-variant hover:text-secondary hover:border-secondary/50 transition-colors duration-300">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="space-y-0 relative z-10">
+<!-- Appointment 1 -->
+<div class="flex items-stretch py-4 border-b border-outline-variant/20 group/item">
+<div class="w-20 pr-4 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-label-md text-on-surface">10:00</span>
+<span class="font-caption text-caption text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1 pl-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface">Arturo Valls</h4>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Toma de medidas · Traje 3 piezas</p>
+</div>
+<button class="bg-surface border border-secondary/20 text-secondary font-label-md text-caption px-3 py-1.5 rounded-DEFAULT hover:border-secondary/50 transition-colors duration-300 flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">auto_awesome</span>
+                                            Resumen Cliente
+                                        </button>
+</div>
+<!-- Embedded AI Summary snippet -->
+<div class="bg-surface/30 p-3 rounded-DEFAULT border border-surface-variant mt-3 hidden md:block">
+<p class="font-body-md text-caption text-on-surface-variant"><strong class="text-on-surface font-label-md font-normal">IA Nota:</strong> Cliente habitual. Preferencia por solapas de pico anchas y tejidos Super 150s ingleses. Última medición hace 14 meses (posible variación en cintura).</p>
+</div>
+</div>
+</div>
+<!-- Appointment 2 -->
+<div class="flex items-stretch py-4 border-b border-outline-variant/20 group/item">
+<div class="w-20 pr-4 flex flex-col items-end justify-start border-r border-secondary/10 relative">
+<!-- Current Time Indicator -->
+<div class="absolute -right-[5px] top-2 w-2 h-2 bg-secondary rounded-full shadow-[0_0_8px_rgba(233,195,73,0.6)]"></div>
+<span class="font-label-md text-label-md text-secondary">12:30</span>
+<span class="font-caption text-caption text-secondary">PM</span>
+</div>
+<div class="flex-1 pl-6">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface">Eduardo Gómez-Ruiz</h4>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Segunda Prueba · Frac</p>
+</div>
+<button class="bg-surface border border-secondary/20 text-secondary font-label-md text-caption px-3 py-1.5 rounded-DEFAULT hover:border-secondary/50 transition-colors duration-300 flex items-center">
+<span class="material-symbols-outlined text-[16px] mr-1">auto_awesome</span>
+                                            Resumen Cliente
+                                        </button>
+</div>
+</div>
+</div>
+<!-- Appointment 3 -->
+<div class="flex items-stretch py-4 group/item">
+<div class="w-20 pr-4 flex flex-col items-end justify-start border-r border-secondary/10 opacity-60">
+<span class="font-label-md text-label-md text-on-surface">16:00</span>
+<span class="font-caption text-caption text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-6 opacity-60">
+<div class="flex justify-between items-start mb-2">
+<div>
+<h4 class="font-headline-md text-body-lg text-on-surface">Carlos Dávila</h4>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Entrega Final · Chaqué</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (Narrower) -->
+<div class="lg:col-span-4 flex flex-col space-y-gutter">
+<!-- Metrics Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center mb-6 relative z-10">
+<span class="material-symbols-outlined mr-2">bar_chart</span>
+                            Métricas del Mes
+                        </h3>
+<div class="space-y-6 relative z-10">
+<!-- Metric 1: Counter -->
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1">Trajes Activos</p>
+<div class="flex items-baseline space-x-2">
+<span class="font-display-lg text-display-lg text-on-surface">42</span>
+<span class="font-label-md text-label-md text-secondary">+3 esta semana</span>
+</div>
+</div>
+<!-- Metric 2: Progress -->
+<div>
+<div class="flex justify-between items-end mb-2">
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest">Progreso vs Objetivo</p>
+<span class="font-label-md text-label-md text-on-surface">78%</span>
+</div>
+<!-- Thin chalk-line progress bar -->
+<div class="h-[2px] bg-surface-variant w-full relative">
+<div class="absolute left-0 top-0 h-full bg-secondary" style="width: 78%;"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-2 text-right">Comisiones completadas (14/18)</p>
+</div>
+</div>
+</section>
+<!-- Notices Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden flex-1">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center mb-6 relative z-10">
+<span class="material-symbols-outlined mr-2">assignment_ind</span>
+                            Avisos e Incidencias
+                        </h3>
+<ul class="space-y-4 relative z-10">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]">content_cut</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Revisión de Producción</p>
+<p class="font-body-md text-caption text-on-surface-variant">Pedido #9902 listo para corte.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-error mr-3 mt-0.5 text-[20px]">call</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Llamada de Cliente</p>
+<p class="font-body-md text-caption text-on-surface-variant">El Sr. Martínez ha llamado 2 veces.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 mt-0.5 text-[20px]">payments</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Transferencia Recibida</p>
+<p class="font-body-md text-caption text-on-surface-variant">Pago confirmado para el traje de 3 piezas del Sr. Valls.</p>
+</div>
+</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>

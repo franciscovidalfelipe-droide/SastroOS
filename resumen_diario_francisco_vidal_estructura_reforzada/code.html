@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Resumen Diario - SastreOS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&amp;family=Hanken+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary": "#e9c349",
+                      "surface-container-low": "#1c1b1b",
+                      "surface": "#131313",
+                      "on-tertiary-container": "#7f7f79",
+                      "surface-container": "#20201f",
+                      "on-primary-container": "#7a7e8b",
+                      "primary-fixed-dim": "#c2c6d4",
+                      "on-tertiary-fixed": "#1b1c18",
+                      "primary-container": "#0f141e",
+                      "error": "#ffb4ab",
+                      "surface-variant": "#353535",
+                      "surface-tint": "#c2c6d4",
+                      "primary-fixed": "#dee2f1",
+                      "tertiary-container": "#141410",
+                      "tertiary-fixed": "#e4e2dc",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-background": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary": "#2b303b",
+                      "on-tertiary-fixed-variant": "#474742",
+                      "on-secondary-container": "#342800",
+                      "surface-container-highest": "#353535",
+                      "outline-variant": "#45474b",
+                      "surface-bright": "#393939",
+                      "surface-container-high": "#2a2a2a",
+                      "outline": "#909096",
+                      "on-surface": "#e5e2e1",
+                      "primary": "#c2c6d4",
+                      "on-error": "#690005",
+                      "on-primary-fixed": "#171c26",
+                      "on-primary-fixed-variant": "#424752",
+                      "secondary-container": "#af8d11",
+                      "inverse-primary": "#595e6b",
+                      "tertiary": "#c8c6c0",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-dim": "#131313",
+                      "error-container": "#93000a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed-dim": "#c8c6c0",
+                      "on-secondary": "#3c2f00",
+                      "on-secondary-fixed": "#241a00",
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary": "#30312c",
+                      "background": "#131313",
+                      "secondary-fixed": "#ffe088",
+                      "on-surface-variant": "#c6c6cc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "container-max-width": "1440px",
+                      "unit": "8px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "EB Garamond"
+                      ],
+                      "label-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "EB Garamond"
+                      ],
+                      "headline-lg-mobile": [
+                              "EB Garamond"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "EB Garamond"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col selection:bg-secondary/30 selection:text-secondary">
+<!-- Top Navigation Header -->
+<header class="bg-surface-container-low border-b border-secondary/20 fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-24">
+<!-- 1. Left Side: Logo and Subtitle -->
+<div class="flex flex-col justify-center shrink-0 w-48 md:w-56">
+<h1 class="font-headline-lg text-headline-lg text-secondary">TomBlack</h1>
+<p class="font-caption text-caption text-on-surface-variant mt-1">SastreOS Premium</p>
+</div>
+<!-- Mobile Menu Toggle -->
+<div class="flex items-center space-x-4 md:hidden">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- 2. Center: Search Bar -->
+<div class="flex-1 flex justify-center px-4 hidden md:flex">
+<div class="relative w-full max-w-xl">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface border-b border-secondary/20 focus:border-secondary/60 focus:ring-0 text-on-surface py-2 pl-10 pr-4 font-body-md text-body-md placeholder:text-on-surface-variant transition-colors duration-300 rounded-none" placeholder="IA Client Search..." type="text"/>
+</div>
+</div>
+<!-- 3. Right Side: User Profile -->
+<div class="flex items-center space-x-3 shrink-0 justify-end md:w-56">
+<span class="font-headline-md text-secondary hidden sm:inline-block tracking-wide">Francisco Vidal</span>
+<span class="material-symbols-outlined text-secondary text-[28px]">account_circle</span>
+</div>
+</header>
+<div class="flex flex-1 pt-24">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface-container-low text-primary font-label-md text-label-md fixed left-0 top-24 h-[calc(100vh-6rem)] w-64 border-r border-secondary/10 flex-col py-8 z-40">
+<ul class="flex flex-col space-y-2 flex-grow px-4">
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-secondary border-secondary font-semibold scale-100 active:scale-[0.98] border-r-[3px]" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+                        Resumen Diario
+                    </a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">calendar_today</span>
+                        Calendario
+                    </a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">straighten</span>
+                        Pedidos
+                    </a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">warning</span>
+                        Incidencias
+                    </a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">mail</span>
+                        Correo
+                    </a>
+</li>
+<li class="">
+<a class="flex items-center px-4 py-3 rounded-DEFAULT text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 scale-100 active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3">insights</span>
+                        Estadísticas
+                    </a>
+</li>
+</ul>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 px-4 bg-tertiary-container border border-secondary/20 text-secondary font-label-md text-label-md rounded-DEFAULT hover:border-secondary/50 transition-colors duration-300 flex items-center justify-center cursor-pointer active:scale-95">
+<span class="material-symbols-outlined mr-2">add</span>
+                    Nueva Comisión
+                </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-full">
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pt-8 pb-12 px-margin-mobile md:px-margin-desktop">
+<!-- Page Header -->
+<div class="mb-8">
+<h2 class="text-on-surface mb-2 font-headline-md text-headline-md">Resumen Diario</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Martes, 24 de Octubre</p>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Side Main Area (Reorganized) -->
+<div class="lg:col-span-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter h-full">
+<!-- Alerts Section (Vertical Left) -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden group flex flex-col h-[600px]">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center"><span class="material-symbols-outlined mr-2">notifications_active</span>Alertas </h3>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors duration-300">Ver todas</button>
+</div>
+<div class="space-y-4 relative z-10 flex-1">
+<div class="space-y-4 overflow-y-auto h-[480px] pr-2 custom-scrollbar">
+<!-- Alert Item 1 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>error</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Pedido en aduanas (Retraso)</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Roberto Merino. </p>
+<div class="">Fecha disponible: 18/05/26          <div class="">Fecha final: 25/05/26</div></div>
+<p class=""></p>
+</div>
+</div>
+<!-- Alert Item 2 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-secondary">
+<span class="material-symbols-outlined text-secondary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>warning</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Entrega</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sr. Pendelton (48h). Pendiente de planchado final. FF: 12/01/26</p>
+</div>
+</div>
+<!-- Alert Item 3 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-primary">
+<span class="material-symbols-outlined text-primary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>call</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Llamar clientes para entregar</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Listado de clientes.</p>
+</div>
+</div>
+<!-- Alert Item 4 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>cancel</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Cita Cancelada</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Marqués de Griñón ha cancelado su prueba de las 18:00.</p>
+</div>
+</div>
+<!-- Alert Item 5 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-secondary">
+<span class="material-symbols-outlined text-secondary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>straighten</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">  Pendientes de integración (8)</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">8 Pedidos pendientes de pasar a producción.</p>
+</div>
+</div>
+<!-- Alert Item 6 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>payments</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Oportunidades abiertas (4)</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Pendientes de seguimiento.</p>
+</div>
+</div>
+<!-- Alert Item 7 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-primary">
+<span class="material-symbols-outlined text-primary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>inventory_2</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Retraso en Forro</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Seda italiana demorada por huelga de transporte.</p>
+</div>
+</div>
+<!-- Alert Item 8 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-secondary">
+<span class="material-symbols-outlined text-secondary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>assignment_late</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Prioridad de Corte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Colección cápsula requiere atención inmediata.</p>
+</div>
+</div>
+<!-- Alert Item 9 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-primary">
+<span class="material-symbols-outlined text-primary mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>task_alt</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Control de Calidad</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Chaqué del Sr. Dávila aprobado para entrega.</p>
+</div>
+</div>
+<!-- Alert Item 10 -->
+<div class="flex items-center p-4 bg-surface/50 border border-secondary/10 rounded-DEFAULT border-l-4 border-l-error">
+<span class="material-symbols-outlined text-error mr-4 text-[28px]" style='font-variation-settings: "FILL" 1;'>smart_toy</span>
+<div class="flex-1">
+<h4 class="font-label-md text-body-lg text-on-surface mb-1">Previsión IA</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Probabilidad de retraso alta para el pedido #9905.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Schedule Section (Vertical Right) -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden group flex flex-col h-[600px]">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center">
+<span class="material-symbols-outlined mr-2">event</span>
+                                        Citas de Hoy (9)
+                                    </h3>
+<div class="flex space-x-2">
+<button class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center text-on-surface-variant hover:text-secondary transition-colors duration-300">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="space-y-4 relative z-10 flex-1">
+<div class="space-y-0 overflow-y-auto h-[480px] pr-2 custom-scrollbar">
+<!-- Appointment 1 -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">10:00</span>
+<span class="font-caption text-[10px] text-on-surface-variant">AM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Arturo Valls</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">Medidas · 3 Piezas</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 2 -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10 relative">
+<div class="absolute -right-[5px] top-2 w-2 h-2 bg-secondary rounded-full"></div>
+<span class="font-label-md text-caption text-secondary">12:30</span>
+<span class="font-caption text-[10px] text-secondary">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">E. Gómez-Ruiz</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">Prueba · Frac</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 3: Ignacio Rivera -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">13:30</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Ignacio Rivera</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">PRUEBA DE TEJIDO · TRAJE 3 PIEZAS</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 4: Marcos Alonso -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">14:45</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Marcos Alonso</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">TOMA DE MEDIDAS · CHAQUÉ</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 5 (Old 3) -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">16:00</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Carlos Dávila</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">Entrega · Chaqué</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">precision_manufacturing</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 6: Javier Ortiz -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">17:15</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Javier Ortiz</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">ENTREGA FINAL · FRAC</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">monetization_on</span> Oportunidades Abiertas</button>
+</div>
+</div>
+<!-- Appointment 7: Ricardo Sanz (Scrollable) -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">18:00</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Ricardo Sanz</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">REVISIÓN DE AJUSTE · ESMOQUIN</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 8: Luis Milla (Scrollable) -->
+<div class="flex items-stretch py-3 border-b border-outline-variant/20 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">18:45</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Luis Milla</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">PRIMERA PRUEBA · TRAJE</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+<!-- Appointment 9: Fernando Hierro (Scrollable) -->
+<div class="flex items-stretch py-3 group/item">
+<div class="w-16 pr-3 flex flex-col items-end justify-start border-r border-secondary/10">
+<span class="font-label-md text-caption text-on-surface">19:30</span>
+<span class="font-caption text-[10px] text-on-surface-variant">PM</span>
+</div>
+<div class="flex-1 pl-4">
+<h4 class="font-label-md text-label-md text-on-surface">Fernando Hierro</h4>
+<p class="font-caption text-[11px] text-on-surface-variant uppercase tracking-wider mb-1">ENTREGA · CAMISERÍA</p>
+<button class="text-secondary font-label-md text-[10px] flex items-center hover:underline"><span class="material-symbols-outlined text-[12px] mr-1">auto_awesome</span> Resumen Cliente</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Right Column (Sidebar) -->
+<div class="lg:col-span-4 flex flex-col space-y-gutter">
+<!-- Metrics Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden h-[450px]">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center mb-6 relative z-10"><span class="material-symbols-outlined mr-2">bar_chart</span>Métricas del Mes</h3>
+<div class="space-y-6 relative z-10">
+<div class="grid grid-cols-2 gap-x-4 gap-y-6">
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">Trajes Entregados</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[24px] text-on-surface">28</span><span class="font-label-md text-[10px] text-secondary">+2</span></div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">Trajes Activos</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[24px] text-on-surface">42</span><span class="font-label-md text-[10px] text-secondary">+3 sem.</span></div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">En Tránsito</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[24px] text-on-surface">15</span></div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">Paralizada</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[24px] text-on-surface">4</span></div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">Nuevos Clientes</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[24px] text-on-surface">12</span><span class="font-label-md text-[10px] text-secondary">+3</span></div>
+</div>
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest mb-1 text-[10px]">Total Facturado</p>
+<div class="flex items-baseline space-x-2"><span class="font-display-lg text-[18px] text-on-surface">36.9k €</span></div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant/20">
+<div class="flex justify-between items-end mb-2">
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-widest text-[10px]">Objetivo Mensual</p>
+<span class="font-label-md text-[12px] text-on-surface">78%</span>
+</div>
+<div class="h-[2px] bg-surface-variant w-full relative">
+<div class="absolute left-0 top-0 h-full bg-secondary" style="width: 78%;"></div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-2 text-right text-[10px]">14/18 completadas</p>
+</div>
+</div>
+</section>
+<!-- Notices Section -->
+<section class="bg-surface-container-low border-t border-secondary/20 p-6 rounded-DEFAULT relative overflow-hidden flex-1">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDIiLz4KPC9zdmc+')] opacity-[0.02] pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-secondary flex items-center mb-6 relative z-10">
+<span class="material-symbols-outlined mr-2">assignment_ind</span>
+                                Incidencias
+                            </h3>
+<ul class="space-y-4 relative z-10">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-0.5 text-[20px]">content_cut</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Producción</p>
+<p class="font-body-md text-caption text-on-surface-variant">Pedido #9902 para corte.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-error mr-3 mt-0.5 text-[20px]">call</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Llamada</p>
+<p class="font-body-md text-caption text-on-surface-variant">Sr. Martínez (2 veces).</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-on-surface-variant mr-3 mt-0.5 text-[20px]">payments</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Transferencia</p>
+<p class="font-body-md text-caption text-on-surface-variant">Pago confirmado Sr. Valls.</p>
+</div>
+</li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(233, 195, 73, 0.2);
+        }
+    </style>
+</body></html>
